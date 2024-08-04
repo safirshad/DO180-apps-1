@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://safiacr.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_bbbd3590eafe409ebc37e60d06fcfe14 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_5a621a20b02846449119913a53811a17 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_32c6424517b34411bee4921f4cca0a4b }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_bbda55db071a47e4a74a3ce7541f1028 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: safiacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_bbbd3590eafe409ebc37e60d06fcfe14 }}/safiacr.azurecr.io/my-php-app:${{ github.sha }}
+        tags: safiacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_32c6424517b34411bee4921f4cca0a4b }}/safiacr.azurecr.io/my-php-app:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'Myphp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_615faf46766445e78599c99732ff4fda }}
-        images: 'safiacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_bbbd3590eafe409ebc37e60d06fcfe14 }}/safiacr.azurecr.io/my-php-app:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_ac6c2bf9709a4523bbef9d005f08397c }}
+        images: 'safiacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_32c6424517b34411bee4921f4cca0a4b }}/safiacr.azurecr.io/my-php-app:${{ github.sha }}'
